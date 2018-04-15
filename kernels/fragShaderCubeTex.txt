@@ -1,0 +1,7 @@
+uniform Texture uCubemap[6];
+varying vec3 reflectvec;
+void main()
+{
+    gl_FragColor = textureCube(uCubemap, reflectvec);
+    gl_FragColor = clamp(gl_FragColor);
+}

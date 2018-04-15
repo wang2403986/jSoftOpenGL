@@ -1,0 +1,31 @@
+attribute vec2 texCoord;
+attribute vec3 position;
+attribute vec3 normal;
+varying float light;
+varying vec2 texCoord;
+vec3 functionName (vec3 position, int arg1, vec3 arg2) {
+	vec3 g_LightPos=vec3(-600f,0f,-1024f);
+    vec3 g_eyePos=vec3(400f,0f,-800f);
+    vec3 L = g_LightPos - position;
+    vec3 V = g_eyePos - g_LightPos;
+    vec3 H = L + V;
+    L = normalize(L);
+    return L;
+}
+void main()
+{
+    gl_Position = position;
+    vec3 g_LightPos=vec3(-600f,0f,-1024f);
+    vec3 g_eyePos=vec3(400f,0f,-800f);
+    vec3 L = g_LightPos - position;
+    vec3 V = g_eyePos - g_LightPos;
+    vec3 H = L + V;
+    L = normalize(L);
+    float g_ambient=0.1f;
+    float saturate =  dot(normal, L);
+    saturate = saturate < 0f ? 0f : saturate ;
+    float diffuse = saturate;
+    float specular = pow(saturate, 7);
+    light = diffuse*2-1.4f+g_ambient + specular;
+    light = light*100;
+}

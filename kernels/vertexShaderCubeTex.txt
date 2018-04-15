@@ -1,0 +1,17 @@
+attribute vec3 position;
+attribute vec2 texCoord;
+attribute vec3 normal;
+varying vec3 reflectvec;
+void main()
+{
+
+	gl_Position = mul(GLProjMatrix, vec4(position,1.0f));
+    vec3 pos = position;
+     vec3 eyepos = vec3(0, 0, 1.0f);
+   vec3 eyevec = normalize(eyepos - pos);
+     
+   vec3 norm = normal;
+     //vec3(0,0,0)-
+   reflectvec = reflect(eyevec, norm);
+
+}

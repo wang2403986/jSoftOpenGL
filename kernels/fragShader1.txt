@@ -1,0 +1,9 @@
+varying vec2 texCoord;
+void main()
+{
+    gl_FragColor = texture2D(texture0, texCoord);
+    int iLight = (int)light;
+    ivec4 lightColor = ivec4(0,iLight,iLight,iLight);
+    gl_FragColor  = gl_FragColor + lightColor;
+    gl_FragColor = clamp(gl_FragColor);
+}

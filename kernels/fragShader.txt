@@ -1,0 +1,10 @@
+varying mipmap(texture0) vec2 texCoord;
+void main()
+{
+    gl_FragColor = MipmapEXT.texture2D(texture0 ,texCoord ,texCoord_mipmap);
+	//	gl_FragColor=ivec4(255,255,255,255);
+	//int iLight = (int )light*0 ;
+	//ivec4 lightColor = ivec4(0 ,iLight ,iLight ,iLight );
+	//gl_FragColor = add(gl_FragColor , lightColor );
+	//gl_FragColor = clamp(gl_FragColor );
+}
